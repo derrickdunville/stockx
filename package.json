@@ -1,0 +1,26 @@
+{
+  "name": "stockx",
+  "version": "1.0.0",
+  "description": "Coding challenge for StockX",
+  "main": "server.js",
+  "scripts": {
+    "start": "PGUSER=stockx PGHOST=localhost PGPASSWORD=stockx PGDATABASE=stockx PGPORT=5432 node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "engines": {
+    "node": "8.10.0",
+    "npm": "3.5.2"
+  },
+  "author": "Derrick Dunville",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "pg": "^7.12.0"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "chai-http": "^4.3.0",
+    "mocha": "^6.2.0"
+  }
+}
