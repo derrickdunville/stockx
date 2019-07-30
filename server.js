@@ -14,23 +14,36 @@ const PORT = 3000
 *   PGPASSWORD - password for user with access to postgres database
 */
 
-// We need to make sure the postgres service is running before
-// starting the nodejs api
-// const client = new Client()
-// client.connect(err => {
-//   if (err) {
-//     console.log("Postgres Connection Error: ", err.stack)
-//   } else {
-//     console.log("Connected to Postgres successfully")
-//   }
-// })
+const startServer = async () => {
+  // We need to make sure the postgres service is running before
+  // starting the nodejs api
+  let retries = 5
+  while(retries){
+    console.log("attempting connection to Postgres...")
+    try {
+      const client = new Client({
+        host: 'postgres',
+        port: 5432,
+        user: 'postgres',
+        password: 'postgres'
+      })
+      await client.connect()
+      console.log("connected to postgres")
+      server.listen(PORT, () => console.log(`Server running on ${PORT}`))
+      // Create a simple GET route
+      server.get('/', (req, res) => res.status(200).send('hello world'))
+      break
+    } catch (error) {
+      console.log(error)
+      retries -= 1
+      console.log("retires remaining: ", retries)
+      await new Promise(resolve => { setTimeout(resolve, 2000) })
+      if(retries == 0){
+        console.log("unable to connect to postgres")
+        process.exit(1)
+      }
+    }
+  }
+}
 
-// Start the express server and listen on the defined PORT
-server.listen(PORT, () =>
-  console.log(`Server running on ${PORT}`
-))
-
-// Create a simple GET route
-server.get('/', (req, res) =>
-  res.status(200).send('hello')
-)
+startServer()
