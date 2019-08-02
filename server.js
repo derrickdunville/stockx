@@ -1,9 +1,12 @@
 const express = require('express')
 const { Client } = require('pg')
+const bodyParser = require('body-parser')
 
 const server = express()
 const PORT = 3000
 
+server.use(bodyParser.json())
+server.use(bodyParser.urlencoded({extended: true}))
 /* POSTGRES CONNECTION
 * create a connection to postgres the connection is established
 * using the following environment variables.
@@ -14,6 +17,9 @@ const PORT = 3000
 *   PGPASSWORD - password for user with access to postgres database
 */
 
+// Create a simple GET route
+server.get('/', (req, res) => res.status(200).send("hello world"))
+
 const startServer = async () => {
   // We need to make sure the postgres service is running before
   // starting the nodejs api
@@ -22,16 +28,14 @@ const startServer = async () => {
     console.log("attempting connection to Postgres...")
     try {
       const client = new Client({
-        host: 'postgres',
-        port: 5432,
-        user: 'postgres',
-        password: 'postgres'
+        host: "postgres",
+        port: "5432",
+        user: "postgres",
+        password: "postgres",
       })
       await client.connect()
       console.log("connected to postgres")
       server.listen(PORT, () => console.log(`Server running on ${PORT}`))
-      // Create a simple GET route
-      server.get('/', (req, res) => res.status(200).send('hello world'))
       break
     } catch (error) {
       console.log(error)
@@ -47,3 +51,5 @@ const startServer = async () => {
 }
 
 startServer()
+
+module.exports = server // export the server for testing
