@@ -1,6 +1,9 @@
 const express = require('express')
 const { Client } = require('pg')
 const bodyParser = require('body-parser')
+const shoeRoutes = require('./src/routes/shoeRoutes'),
+      trueToSizeRoutes = require('./src/routes/trueToSizeRoutes'),
+      trueToSizeCalculationRoutes = require('./src/routes/trueToSizeCalculationRoutes')
 
 const server = express()
 const PORT = 3000
@@ -17,8 +20,10 @@ server.use(bodyParser.urlencoded({extended: true}))
 *   PGPASSWORD - password for user with access to postgres database
 */
 
-// Create a simple GET route
-server.get('/', (req, res) => res.status(200).send("hello world"))
+// Setup the server routes
+shoeRoutes(server)
+trueToSizeRoutes(server)
+trueToSizeCalculationRoutes(server)
 
 const startServer = async () => {
   // We need to make sure the postgres service is running before
