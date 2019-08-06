@@ -16,3 +16,8 @@ docker-compose -f docker-compose.yml up
 ```
 docker-compose down
 ```
+
+### Test
+```
+docker-compose -f docker-compose.test.yml up
+```

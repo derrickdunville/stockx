@@ -3,5 +3,5 @@ CREATE TABLE shoe (
   name varchar(50) NOT NULL UNIQUE
 );
 
-GRANT ALL PRIVILEGES ON TABLE shoe TO stockx;
-GRANT USAGE, SELECT ON SEQUENCE shoe_id_seq TO stockx;
+GRANT ALL PRIVILEGES ON TABLE shoe TO postgres;
+GRANT USAGE, SELECT ON SEQUENCE shoe_id_seq TO postgres;

@@ -4,8 +4,8 @@
   "description": "Coding challenge for StockX",
   "main": "server.js",
   "scripts": {
-    "start": "PGUSER=stockx PGHOST=localhost PGPASSWORD=stockx PGDATABASE=stockx PGPORT=5432 node server.js",
-    "test": "PGUSER=stockx PGHOST=localhost PGPASSWORD=stockx PGDATABASE=stockx PGPORT=5432 mocha --timeout 1000 --exit"
+    "start": "node server.js",
+    "test": "mocha --timeout 1000 --exit"
   },
   "engines": {
     "node": "8.10.0",

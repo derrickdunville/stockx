@@ -5,5 +5,5 @@ CREATE TABLE true_to_size (
   CHECK (value > 0 AND value < 6)
 );
 
-GRANT ALL PRIVILEGES ON TABLE true_to_size TO stockx;
-GRANT USAGE, SELECT ON SEQUENCE true_to_size_id_seq TO stockx;
+GRANT ALL PRIVILEGES ON TABLE true_to_size TO postgres;
+GRANT USAGE, SELECT ON SEQUENCE true_to_size_id_seq TO postgres;

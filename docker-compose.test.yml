@@ -1,0 +1,18 @@
+# docker-compose.yml
+version: "3"
+services:
+  test:
+    build:
+      context: ./app
+      dockerfile: Dockerfile-test
+    links:
+      - postgres
+
+  postgres:
+    build: ./db
+    logging:
+      driver: none
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DATABASE: postgres
