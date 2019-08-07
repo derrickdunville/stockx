@@ -5,7 +5,7 @@ const shoeRoutes = require('./src/routes/shoeRoutes'),
       trueToSizeRoutes = require('./src/routes/trueToSizeRoutes'),
       trueToSizeCalculationRoutes = require('./src/routes/trueToSizeCalculationRoutes')
 
-const server = express()
+var server = express()
 const PORT = 3000
 
 server.use(bodyParser.json())
@@ -30,7 +30,7 @@ const startServer = async () => {
   // starting the nodejs api
   let retries = 5
   while(retries){
-    console.log("attempting connection to Postgres...")
+    console.log("Attempting connection to Postgres...")
     try {
       const client = new Client({
         host: "postgres",
@@ -39,8 +39,11 @@ const startServer = async () => {
         password: "postgres",
       })
       await client.connect()
-      console.log("connected to postgres")
-      server.listen(PORT, () => console.log(`Server running on ${PORT}`))
+      console.log("Connected to Postgres, starting server...")
+      server.listen(PORT, () => {
+        console.log("Server started successfully")
+        server.emit("started") // alerts mocha that the server is started
+      })
       break
     } catch (error) {
       console.log(error)

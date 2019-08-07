@@ -4,11 +4,12 @@ const chai      = require('chai'),
       chaiHttp  = require('chai-http'),
       server    = require('../server'),
       should    = chai.should(),
-      pool      = require('../src/utils/postgresPool')
-
+      pool      = require('../src/utils/postgresPool'),
+      init      = require('./init')
+      
 chai.use(chaiHttp)
 
-describe('Shoe Test', () => {
+describe('Shoe Test Suite', () => {
 
   beforeEach((done) => {
     pool.query('DELETE FROM shoe', [])
