@@ -32,12 +32,7 @@ const startServer = async () => {
   while(retries){
     console.log("Attempting connection to Postgres...")
     try {
-      const client = new Client({
-        host: "postgres",
-        port: "5432",
-        user: "postgres",
-        password: "postgres",
-      })
+      const client = new Client()
       await client.connect()
       console.log("Connected to Postgres, starting server...")
       server.listen(PORT, () => {

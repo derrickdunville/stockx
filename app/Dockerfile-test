@@ -6,10 +6,16 @@ COPY package.json /app
 
 ENV NODE_ENV DEV
 
+ENV PGUSER postgres
+ENV PGHOST postgres
+ENV PGPASSWORD postgres
+ENV PGDATABASE postgres
+ENV PGPORT 5432
+
 RUN npm install
 
 COPY . /app
 
 EXPOSE 3000
 
-CMD [ "npm", "run", "test" ]
+CMD [ "npm", "run", "docker:test" ]
