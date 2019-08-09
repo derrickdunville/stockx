@@ -7,6 +7,12 @@ services:
       - postgres
     ports:
       - "3000:3000"
+    environment:
+      PG_HOST: postgres
+      PG_DATABASE: postgres
+      PG_PORT: 5432
+      PG_USER: postgres
+      PG_PASSWORD: postgres
 
   postgres:
     build: ./db
