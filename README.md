@@ -9,7 +9,13 @@ This is an interview coding challenge created for StockX. It is a backend HTTP A
 
 ## docker-compose
 
-The project is setup to be used with docker-compose.
+The project is setup to be used with docker-compose. You will need docker-compose installed on your local machine to build and run the application.
+
+## Installing
+Clone this repository and use docker-compose to build and run the application.
+```
+git clone https://github.com/derrickdunville/stockx
+```
 
 ## Running the Application
 ### Build

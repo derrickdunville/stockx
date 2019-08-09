@@ -10,15 +10,6 @@ const PORT = 3000
 
 server.use(bodyParser.json())
 server.use(bodyParser.urlencoded({extended: true}))
-/* POSTGRES CONNECTION
-* create a connection to postgres the connection is established
-* using the following environment variables.
-*   PGHOST - host addresss where postgres server is located
-*   PGPORT - the port postgres is open on at the host
-*   PGDATABASE - name of database to connect to
-*   PGUSER - username for user with access to postgres database
-*   PGPASSWORD - password for user with access to postgres database
-*/
 
 // Setup the server routes
 shoeRoutes(server)
@@ -26,8 +17,7 @@ trueToSizeRoutes(server)
 trueToSizeCalculationRoutes(server)
 
 const startServer = async () => {
-  // We need to make sure the postgres service is running before
-  // starting the nodejs api
+  // We need to make sure the postgres service is running before starting the nodejs api
   let retries = 5
   while(retries){
     console.log("Attempting connection to Postgres...")
