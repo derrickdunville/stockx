@@ -6,6 +6,8 @@ This is an interview coding challenge created for StockX. It is a backend HTTP A
 - NodeJS
 - Postgres
 - Docker
+- Prometheus
+- cAdvisor
 
 ## docker-compose
 
@@ -48,4 +50,18 @@ docker compose -f docker-compose.test.yml build
 To run the test suite use
 ```
 docker-compose -f docker-compose.test.yml up
+```
+
+## Monitoring
+The application is configured to use prometheus and cAdvisor as tool to monitor the containers.
+- [Prometheus](https://prometheus.io/) localhost:9090
+- [cAdvisor](https://github.com/google/cadvisor) localhost:8080
+
+## Logging
+To view the log files for each container
+```
+docker logs app
+docker logs postgres
+docker logs cadvisor
+docker logs prometheus
 ```

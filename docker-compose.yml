@@ -1,12 +1,40 @@
 # docker-compose.yml
 version: "3"
 services:
+
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: prometheus
+    ports:
+    - 9090:9090
+    command:
+    - --config.file=/etc/prometheus/prometheus.yml
+    volumes:
+    - ./prometheus.yml:/etc/prometheus/prometheus.yml:ro
+    depends_on:
+    - cadvisor
+
+  cadvisor:
+    image: google/cadvisor:latest
+    container_name: cadvisor
+    ports:
+    - 8080:8080
+    volumes:
+    - c:\:/rootfs:ro
+    - /var/run:/var/run:rw
+    - /sys:/sys:ro
+    - /var/lib/docker/:/var/lib/docker:ro
+    depends_on:
+      - app
+      - postgres
+
   app:
+    container_name: app
     build: ./app
     depends_on:
       - postgres
     ports:
-      - "3000:3000"
+      - 3000:3000
     environment:
       PG_HOST: postgres
       PG_DATABASE: postgres
@@ -15,6 +43,7 @@ services:
       PG_PASSWORD: postgres
 
   postgres:
+    container_name: postgres
     build: ./db
     environment:
       POSTGRES_USER: postgres
