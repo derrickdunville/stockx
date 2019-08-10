@@ -1,6 +1,6 @@
 # StockX Coding Challenge
 
-This is an interview coding challenge created for StockX. It is a backend HTTP API
+This is an interview coding challenge created for StockX. It is a backend HTTP API that can be used to submit true to size data for shoes. A true to size calculation can be retrieved for a shoe. 
 
 ## Technologies  
 - NodeJS
