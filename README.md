@@ -1,6 +1,6 @@
 # StockX Coding Challenge
 
-This is an interview coding challenge created for StockX. It is a backend HTTP API that can be used to submit true to size data for shoes. A true to size calculation can be retrieved for a shoe. 
+This is an interview coding challenge created for StockX. It is a backend HTTP API that can be used to submit true to size data for shoes. A true to size calculation can be retrieved for a shoe.
 
 ## Technologies  
 - NodeJS
@@ -12,6 +12,8 @@ This is an interview coding challenge created for StockX. It is a backend HTTP A
 ## docker-compose
 
 The project is setup to be used with docker-compose. You will need docker-compose installed on your local machine to build and run the application.
+
+Docker Desktop is all you will need to install to get this application up and running. 
 
 ## Installing
 Clone this repository and use docker-compose to build and run the application.
