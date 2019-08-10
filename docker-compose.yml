@@ -36,16 +36,16 @@ services:
     ports:
       - 3000:3000
     environment:
-      PG_HOST: postgres
-      PG_DATABASE: postgres
-      PG_PORT: 5432
-      PG_USER: postgres
-      PG_PASSWORD: postgres
+      PGHOST: postgres
+      PGDATABASE: postgres
+      PGPORT: 5432
+      PGUSER: postgres
+      PGPASSWORD: ${PGPASSWORD}
 
   postgres:
     container_name: postgres
     build: ./db
     environment:
       POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
-      POSTGRES_DATABASE: postgres
+      POSTGRES_PASSWORD: ${PGPASSWORD}
+      POSTGRES_DB: postgres

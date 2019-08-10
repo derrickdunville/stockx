@@ -13,13 +13,16 @@ This is an interview coding challenge created for StockX. It is a backend HTTP A
 
 The project is setup to be used with docker-compose. You will need docker-compose installed on your local machine to build and run the application.
 
-Docker Desktop is all you will need to install to get this application up and running. 
+Docker Desktop is all you will need to install to get this application up and running.
 
 ## Installing
 Clone this repository and use docker-compose to build and run the application.
 ```
 git clone https://github.com/derrickdunville/stockx
 ```
+
+### .env
+The `.env` file should be used to set the password for Postgres. Changes to this file should not be committed as it contains sensitive information.
 
 ## Running the Application
 ### Build
