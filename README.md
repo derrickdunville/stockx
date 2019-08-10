@@ -48,7 +48,7 @@ docker-compose down
 ### Build
 To build the test environment use
 ```
-docker compose -f docker-compose.test.yml build
+docker-compose -f docker-compose.test.yml build
 ```
 
 ### Test
